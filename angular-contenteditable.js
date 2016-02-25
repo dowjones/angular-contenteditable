@@ -13,6 +13,12 @@ angular.module('contenteditable', [])
       if (!ngModel) {
         return
       }
+      
+      var method = "html";
+      var extract = $parse(attr.extract)(scope);
+      if (extract === "text") {
+        method = "text";
+      }
 
       // options
       var opts = {}
@@ -31,22 +37,26 @@ angular.module('contenteditable', [])
       element.bind('input', function(e) {
         scope.$apply(function() {
           var html, html2, rerender
-          html = element.html()
+          html = element[method]().trim()
           rerender = false
-          if (opts.stripBr) {
-            html = html.replace(/<br>$/, '')
-          }
-          if (opts.noLineBreaks) {
-            html2 = html.replace(/<div>/g, '').replace(/<br>/g, '').replace(/<\/div>/g, '')
-            if (html2 !== html) {
+          
+          if (method === "html") {
+            if (opts.stripBr) {
+              html = html.replace(/<br>$/, '')
+            }
+            if (opts.noLineBreaks) {
+              html2 = html.replace(/<div>/g, '').replace(/<br>/g, '').replace(/<\/div>/g, '')
+              if (html2 !== html) {
+                rerender = true
+                html = html2
+              }
+            }
+            if (opts.stripTags) {
               rerender = true
-              html = html2
+              html = html.replace(/<\S[^><]*>/g, '')
             }
           }
-          if (opts.stripTags) {
-            rerender = true
-            html = html.replace(/<\S[^><]*>/g, '')
-          }
+          
           ngModel.$setViewValue(html)
           if (rerender) {
             ngModel.$render()
