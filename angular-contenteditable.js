@@ -15,7 +15,7 @@ angular.module('contenteditable', [])
       }
       
       var method = "html";
-      var extract = $parse(attr.extract)(scope);
+      var extract = $parse(attrs.extract)(scope);
       if (extract === "text") {
         method = "text";
       }
