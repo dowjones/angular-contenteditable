@@ -5,7 +5,7 @@
  */
 
 angular.module('contenteditable', [])
-  .directive('contenteditable', ['$timeout', function($timeout) { return {
+  .directive('contenteditable', ['$timeout', '$parse', function($timeout, $parse) { return {
     restrict: 'A',
     require: '?ngModel',
     link: function(scope, element, attrs, ngModel) {
