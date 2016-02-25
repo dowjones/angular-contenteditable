@@ -5,7 +5,7 @@
  */
 
 angular.module('contenteditable', [])
-  .directive('contenteditable', ['$timeout', '$parse', function($timeout, $parse) { return {
+  .directive('contenteditable', ['$timeout', function($timeout) { return {
     restrict: 'A',
     require: '?ngModel',
     link: function(scope, element, attrs, ngModel) {
@@ -15,7 +15,7 @@ angular.module('contenteditable', [])
       }
       
       var method = "html";
-      var extract = $parse(attrs.extract)(scope);
+      var extract = attrs.extract;
       if (extract === "text") {
         method = "text";
       }
