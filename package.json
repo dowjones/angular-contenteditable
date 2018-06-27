@@ -2,10 +2,7 @@
   "name": "angular-contenteditable",
   "version": "0.3.8",
   "description": "angular model for the 'contenteditable' html attribute",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/akatov/angular-contenteditable.git"
-  },
+  "repository": "",
   "main": "angular-contenteditable.js",
   "directories": {
     "test": "test"
@@ -14,7 +11,6 @@
     "install": "bower install",
     "test": "grunt test"
   },
-  "repository": "",
   "keywords": [
     "angular",
     "extension"
@@ -22,13 +18,13 @@
   "author": "Dmitri Akatov",
   "license": "BSD",
   "devDependencies": {
-    "matchdep": "~0.3.0",
-    "grunt": "~0.4.1",
-    "grunt-cli": "~0.1.13",
-    "grunt-contrib-jshint": "~0.7.1",
-    "grunt-karma": "~0.6.2",
-    "bower": "~1.3.5",
-    "karma": "~0.10.2",
+    "matchdep": "~2.0.0",
+    "grunt": "~1.0.3",
+    "grunt-cli": "~1.2.0",
+    "grunt-contrib-jshint": "~1.1.0",
+    "grunt-karma": "~2.0.0",
+    "bower": "~1.8.4",
+    "karma": "~2.0.4",
     "karma-ng-scenario": "0.1.0",
     "karma-coffee-preprocessor": "0.1.0"
   }
